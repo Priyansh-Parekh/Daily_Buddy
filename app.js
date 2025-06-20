@@ -15,5 +15,5 @@ app.use(cookieParser());
 app.use('/',require('./server/route/main'));
 
 app.listen(port,()=>{
-    console.log('app is running on ${port} port');
+    console.log(`app is running on ${port} port`);
 });
