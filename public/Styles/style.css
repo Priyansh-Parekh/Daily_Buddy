@@ -223,7 +223,7 @@ a{
     padding: 2.5rem;
     width: 80.5vw;
     height: 69vh;
-    background: linear-gradient(to bottom right, #1e1e1e, #121212);
+    /* background: linear-gradient(to bottom right, #1e1e1e, #121212); */
     color: #e5e7eb;
     display: flex;
     align-items: center;
