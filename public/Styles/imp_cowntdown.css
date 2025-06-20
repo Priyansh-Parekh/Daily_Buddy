@@ -1,0 +1,292 @@
+/* ============ GENERAL STYLES ============ */
+#main-content-count::-webkit-scrollbar {
+    display: none;
+}
+#count--add-reminder ::-webkit-scrollbar {
+    display: none;
+}
+
+/* ============ MAIN CONTAINER ============ */
+#count-main-content {
+   display: flex;
+    flex-direction: column;
+    min-height: 72vh;
+    margin-top: 20vh;
+    margin-left: 14vw;
+    padding: 2.5rem;
+    width: auto;
+    min-width: 79vw;
+     /* background: linear-gradient(to bottom right, #1e1e1e, #121212); */
+    color: #e5e7eb;
+    align-items: center;
+}
+
+
+/* ============ HEADER ============ */
+.count-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2rem;
+    border-left: 1em solid #facc15;
+    border-bottom-left-radius: 30px;
+}
+
+.count-header h1 {
+    font-size: 2rem;
+    color: #facc15;
+}
+
+/* ============ ADD BUTTON ============ */
+.count-add-btn,
+.reminder-form .count-add-btn {
+    background: linear-gradient(to right, #6366f1, #10b981);
+    border: none;
+    padding: 0.7rem 1.4rem;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.count-add-btn:hover,
+.reminder-form .count-add-btn:hover {
+    background: linear-gradient(to right, #10b981, #3b82f6);
+}
+
+/* ============ REMINDER FORM ============ */
+#count--add-reminder {
+    display: none;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 3rem;
+    animation: slideFade 0.4s ease-in-out;
+}
+
+@keyframes slideFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reminder-form {
+    background-color: #1c1c1f;
+    color: #e0e0e0;
+    border: 1px solid #2d2d32;
+    padding: 2rem;
+    border-radius: 16px;
+    width: 75%;
+    margin-left: 10vh;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.reminder-form:hover {
+    box-shadow: 0 0 12px rgba(250, 204, 21, 0.1);
+}
+
+.reminder-form h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    color: #facc15;
+    border-bottom: 1px solid #2d2d32;
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.reminder-form .form-group {
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.reminder-form label {
+    font-size: 1rem;
+    color: #9ca3af;
+    margin-bottom: 0.4rem;
+}
+
+.reminder-form input,
+.reminder-form textarea {
+    background-color: #111827;
+    color: #facc15;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #374151;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    resize: none;
+}
+
+.reminder-form textarea::-webkit-scrollbar {
+    display: none;
+}
+
+.reminder-form input:focus,
+.reminder-form textarea:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 6px #10b98188;
+}
+
+/* ============ COUNT LIST ============ */
+.count-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.5rem;
+}
+
+/* ============ COUNT CARD ============ */
+.count-card {
+    background-color: #2a2a2e;
+    padding: 1.5rem;
+    margin-left: 10vw;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    width: 75%;
+}
+
+.count-card h3 {
+    font-size: 1.5rem;
+    color: #facc15;
+    margin: 0;
+    padding-right: 0.5em;
+    padding-bottom: 0.1em;
+    width: fit-content;
+    border-right: 8px solid #155afc;
+    border-bottom: 4px solid #155afc;
+    border-top-right-radius: 20px;
+}
+
+.count-meta {
+    margin: 2rem 0 1.5rem 10%;
+    font-size: 1rem;
+    color: #d1d5db;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    background: #2a2a2e;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 6px solid #facc15;
+}
+
+/* Individual rows */
+.meta-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    line-height: 1.5;
+}
+
+/* Icons */
+.meta-icon {
+    font-size: 1.2rem;
+}
+
+/* Labels */
+.meta-label {
+    font-weight: bold;
+    color: #facc15;
+    min-width: 90px;
+}
+
+/* Values */
+.meta-value {
+    color: #e5e7eb;
+    flex: 1;
+    word-wrap: break-word;
+}
+
+/* ============ COUNTDOWN TIMER ============ */
+
+.count-timer {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    margin: 2rem 0 1.5rem 10%;
+    flex-wrap: wrap;
+}
+
+/* Each countdown box */
+.count-box {
+    background: linear-gradient(145deg, #1f1f22, #29292d);
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+    text-align: center;
+    width: 90px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.count-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(250, 204, 21, 0.3);
+}
+
+/* Timer number */
+.count-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #facc15;
+    margin-bottom: 0.2rem;
+}
+
+/* Timer label */
+.count-label {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    letter-spacing: 0.5px;
+}
+
+
+/* ============ ACTION BUTTONS ============ */
+.count-actions {
+    display: flex;
+    gap: 1em;
+    margin-top: 0.8rem;
+}
+
+.count-actions button {
+    margin-left: 2em;
+    margin-right: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.count-complete-btn {
+    background-color: #10b981;
+}
+
+.count-complete-btn:hover {
+    background-color: #059669;
+}
+
+.count-edit-btn {
+    background-color: #3b82f6;
+}
+
+.count-edit-btn:hover {
+    background-color: #2563eb;
+}
+
+.count-delete-btn {
+    background-color: #ef4444;
+}
+
+.count-delete-btn:hover {
+    background-color: #dc2626;
+}

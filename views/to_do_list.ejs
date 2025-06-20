@@ -1,0 +1,50 @@
+<main id="main-content-todo">
+  <% if (user!="email" ) { %>
+    <% const categories=['assignment', 'exam' , 'project' , 'other' ]; %>
+
+      <% categories.forEach(section=> { %>
+        <section class="todo-section" id="<%= section %>">
+          <h2>
+            <%= section.charAt(0).toUpperCase() + section.slice(1) %> Tasks
+          </h2>
+
+          <!-- Add new task form -->
+          <form action="/to_do_list" method="POST" class="todo-form">
+            <input type="hidden" name="category" value="<%= section %>">
+            <input type="text" name="data" placeholder="Add a new task..." required>
+            <button type="submit">➕ Create New</button>
+          </form>
+
+          <!-- List of tasks -->
+          <ul class="task-list">
+            <% const taskList=user.to_do_list[section]; %>
+              <% if (taskList && taskList.length> 0) { %>
+                <% taskList.forEach((todo, index)=> { %>
+                  <li>
+                    <input type="checkbox" id="<%= section %>-<%= index %>">
+                    <input type="hidden" name="_id" value="<%= todo._id %>">
+                    <label for="<%= section %>-<%= index %>">
+                      <%= todo.data %>
+                    </label>
+                    <form action="to_do_list/delete" method="post">
+                       <input type="hidden" name="_id" value="<%= todo._id %>">
+                      <input type="hidden" value="<%= section %>" name="category">
+                      <button>🗑️</button>
+                    </form>
+                  </li>
+                  <% }) %>
+                    <% } else { %>
+                      <li class="empty-task">No tasks in this category.</li>
+                      <% } %>
+          </ul>
+        </section>
+        <% }) %>
+          <% }else{ %>
+            <section class="welcome-card">
+              <h2>👋 Welcome!</h2>
+              <p>Get <strong>logged in</strong> to explore more features like your To-do list, Timetable, and Important
+                Countdown.</p>
+              <a href="/login" class="action-btn">Log In</a>
+            </section>
+            <% } %>
+</main>

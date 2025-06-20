@@ -1,0 +1,165 @@
+/* === Main Money Tracker Layout Tweaks === */
+#moneytracker-main-content {
+    
+  margin-top: 20vh;
+  margin-left: 14vw;
+  padding: 2.5rem;
+  padding-top: 1rem;
+  width: 80.5vw;
+  height: 72vh;
+  /* background: linear-gradient(to bottom right, #1e1e1e, #121212); */
+  color: #e5e7eb;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+#moneytracker-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #10a95a;
+  text-shadow: 0 0 4px rgba(250, 204, 21, 0.15);
+}
+
+/* === Compact Inputs and Form Layout === */
+.moneytracker-month-setup,
+.moneytracker-expense-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  background: #1e1e1e;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.05);
+  align-items: center;
+}
+
+.moneytracker-month-setup{
+    padding-left:10em;
+}
+.moneytracker-month-setup label,
+.moneytracker-expense-form input,
+.moneytracker-expense-form select {
+  flex: 1 1 160px;
+  font-size: 0.9rem;
+}
+
+.moneytracker-month-setup input,
+.moneytracker-expense-form input,
+.moneytracker-expense-form select {
+  padding: 0.5rem 0.7rem;
+  border-radius: 8px;
+  border: none;
+  background: #2a2a2a;
+  color: #fff;
+}
+
+#moneytracker-set-month-btn,
+#moneytracker-add-expense-btn {
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  background: linear-gradient(to right, #10b981, #3b82f6);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#moneytracker-set-month-btn:hover,
+#moneytracker-add-expense-btn:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(to right, #3b82f6, #10b981);
+}
+
+/* === Summary Boxes === */
+.moneytracker-summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.moneytracker-summary-box {
+  flex: 1 1 200px;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: #1f2937;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+  color: #125f9a;
+}
+
+#moneytracker-sum-income{
+    color: #10b981;
+}
+
+#moneytracker-sum-expenses{
+    color: #da3615;
+}
+
+#moneytracker-sum-budget{
+    color: #d3da15;
+}
+#moneytracker-sum-balance{
+    color: #15da2c;
+}
+/* === Table (Expense Records) === */
+#moneytracker-record-section {
+  margin-bottom: 1.5rem;
+}
+
+#moneytracker-expense-table {
+    margin-top: 1em;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#moneytracker-expense-table th,
+#moneytracker-expense-table td {
+  padding: 0.6rem 0.4rem;
+  border-bottom: 1px solid #333;
+  text-align: center;
+}
+
+#moneytracker-expense-table th {
+  background-color: #2d2d2d;
+  color: #facc15;
+}
+
+#moneytracker-expense-table td:last-child {
+  color: #ff5252;
+  cursor: pointer;
+}
+
+/* === Chart Canvas === */
+#moneytracker-expense-chart {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  background: #1e1e1e;
+  height: 50vh;
+  border-radius: 8px;
+  padding: 1rem;
+  padding-top: 0%;
+}
+
+
+
+#moneytracker-expense-form-id{
+    margin-top: 10vh;
+    border-left: 1em solid red;
+    border-bottom-left-radius: 2em;
+}
+
+#moneytracker-income-form-id{
+    margin-top: 15vh;
+    border-left: 1em solid greenyellow;
+    border-bottom-left-radius: 2em;
+}

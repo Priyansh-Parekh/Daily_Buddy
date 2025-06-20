@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily-Buddy</title>
+    <link rel="stylesheet" href="/Styles/style.css" />
+    <link rel="stylesheet" href="/Styles/sign_up.css" />
+    <link rel="stylesheet" href="/Styles/login.css" />
+    <link rel="stylesheet" href="/Styles/log_out.css" />
+    <link rel="stylesheet" href="/Styles/to_do_list.css" />
+    <link rel="stylesheet" href="/Styles/attendance.css" />
+    <link rel="stylesheet" href="/Styles/imp_cowntdown.css" />
+    <link rel="stylesheet" href="/Styles/money_tracker.css" />
+  </head>
+  <body>
+    <%- include("../partials/header.ejs") %>
+    <%-include("../partials/sidebar.ejs") %> 
+    <%- body %>
+    <%-include("../partials/footer.ejs") %>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/scripts/script.js"></script>
+  </body>
+</html>

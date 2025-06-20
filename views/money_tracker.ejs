@@ -1,0 +1,302 @@
+<div id="moneytracker-main-content">
+
+    <% if(user!=="email" ){ %>
+
+        <h1 id="moneytracker-title">💸 Monthly Money Tracker</h1>
+
+        <!-- 🔹 Chart Placeholder -->
+        <canvas id="moneytracker-expense-chart"></canvas>
+
+        <!-- 🔹 Summary -->
+
+        <% let latest_month=user.money_manager[0] %>
+
+            <section class="moneytracker-summary">
+                <div class="moneytracker-summary-box">Income: <span id="moneytracker-sum-income">₹
+                        <% if (latest_month) { %>
+                            <%= latest_month.income %>
+                                <% }else{ %>
+                                    0
+                                    <% } %>
+                    </span></div>
+                <div class="moneytracker-summary-box">Budget: <span id="moneytracker-sum-budget">₹
+                        <% if (latest_month) { %>
+                            <%= latest_month.budget %>
+                                <% }else{ %>
+                                    0
+                                    <% } %>
+                    </span></div>
+                <div class="moneytracker-summary-box">Expenses: <span id="moneytracker-sum-expenses">₹
+                        <% if (latest_month) { %>
+                            <%= latest_month.expense %>
+                                <% }else{ %>
+                                    0
+                                    <% } %>
+                    </span></div>
+                <div class="moneytracker-summary-box">Balance: <span id="moneytracker-sum-balance">₹
+                        <% if (latest_month) { %>
+                            <%= latest_month.balance %>
+                                <% }else{ %>
+                                    0
+                                    <% } %>
+                    </span></div>
+            </section>
+
+            <!-- 🔹 Setup Monthly Budget & Income -->
+            <% if (!user.currnet_month_exist) { %>
+                <h2>
+                    You Haven't Set Up This Month! Make it quick......
+                </h2>
+                <form class="moneytracker-month-setup" method="post" action="/money_tracker/setupofmonth">
+                    <label>
+                        Income:
+                        <input type="number" name="income" required id="moneytracker-income-input"
+                            placeholder="₹ e.g. 6000" />
+                    </label>
+                    <label>
+                        Budget:
+                        <input type="number" name="budget" required id="moneytracker-budget-input"
+                            placeholder="₹ e.g. 5000" />
+                    </label>
+                    <button id="moneytracker-set-month-btn">Set Current Month</button>
+                </form>
+                <% } %>
+
+
+
+
+
+                    <% let now=new Date(); %>
+                        <% let year=now.getFullYear(); %>
+                            <% let month=(now.getMonth() + 1).toString().padStart(2, '0' ); %>
+                                <% let firstDay=`${year}-${month}-01`; %>
+                                    <% let lastDay=new Date(year, month, 0).toISOString().slice(0, 10); %>
+
+
+                                        <!-- 🔹 Add Expense -->
+                                        <form class="moneytracker-expense-form" id="moneytracker-expense-form-id"
+                                            action="/money_tracker/add_expense_record" method="post">
+                                            <h2 id="moneytracker-expense-title">Add Expense</h2>
+                                            <input type="date" min="<%= firstDay %>" max="<%= lastDay %>" name="date"
+                                                id="moneytracker-expense-date" required />
+                                            <input type="text" name="description" id="moneytracker-expense-desc"
+                                                required placeholder="Reason" />
+                                            <input type="number" name="amount" id="moneytracker-expense-amount" required
+                                                placeholder="₹ Amount" />
+                                            <select id="moneytracker-expense-category" required name="category">
+                                                <option value="🍕 Food">🍕 Food</option>
+                                                <option value="🏠 Rent">🏠 Rent</option>
+                                                <option value="📱 Recharge">📱 Recharge</option>
+                                                <option value="📦 Misc">📦 Misc</option>
+                                                <option value="✈️ Travel">✈️ Travel</option>
+                                                <option value="🛍️ Shopping">🛍️ Shopping</option>
+                                                <option value="🩺 Health">🩺 Health</option>
+                                                <option value="📚 Education">📚 Education</option>
+                                                <option value="🛒 Groceries">🛒 Groceries</option>
+                                                <option value="💡 Bills">💡 Bills</option>
+                                                <option value="📺 Subscriptions">📺 Subscriptions</option>
+                                                <option value="🚌 Transportation">🚌 Transportation</option>
+                                                <option value="🎁 Gifts">🎁 Gifts</option>
+                                                <option value="🎬 Entertainment">🎬 Entertainment</option>
+                                                <option value="🍟 Snacks">🍟 Snacks</option>
+                                                <option value="💰 Savings">💰 Savings</option>
+                                                <option value="📄 EMI">📄 EMI</option>
+                                                <option value="🐶 Pet Care">🐶 Pet Care</option>
+                                                <option value="🧴 Personal Care">🧴 Personal Care</option>
+                                                <option value="🧺 Laundry">🧺 Laundry</option>
+                                                <option value="🖊️ Stationery">🖊️ Stationery</option>
+                                                <option value="📈 Investment">📈 Investment</option>
+                                                <option value="🙏 Charity">🙏 Charity</option>
+                                                <option value="🚨 Emergency">🚨 Emergency</option>
+                                            </select>
+
+                                            <button id="moneytracker-add-expense-btn">➕ Add Expense</button>
+                                        </form>
+
+
+
+                                        <!-- 🔹 Expense Records -->
+                                        <section class="moneytracker-record-section">
+                                            <h2 id="moneytracker-record-title">Expense Records</h2>
+                                            <table id="moneytracker-expense-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Description</th>
+                                                        <th>Amount</th>
+                                                        <th>Category</th>
+                                                        <th>❌</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="moneytracker-expense-table-body">
+                                                    <% if(latest_month){ %>
+                                                        <% let data=latest_month.expense_record %>
+                                                            <% if (data.length !==0) { %>
+                                                                <% data.sort((a, b)=> new Date(b.date) - new
+                                                                    Date(a.date)) %>
+                                                                    <% data.forEach(data=> { %>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <%= data.date.toDateString() %>
+                                                                            </td>
+                                                                            <td>
+                                                                                <%= data.description %>
+                                                                            </td>
+                                                                            <td style="color: red;font-weight: bolder;">
+                                                                                <%= data.amount %>
+                                                                            </td>
+                                                                            <td>
+                                                                                <%= data.category %>
+                                                                            </td>
+                                                                            <td>
+                                                                                <form
+                                                                                    action="/money_tracker/expense_record_delete"
+                                                                                    method="post">
+                                                                                    <input type="hidden" name="_id"
+                                                                                        value="<%= data._id %>">
+                                                                                    <button
+                                                                                        style="background-color: transparent;">❌</button>
+                                                                                </form>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <% }); %>
+                                                                            <% }else{ %>
+                                                                                <tr>
+                                                                                    <td colspan="5">No Record
+                                                                                        Available......... for
+                                                                                        This
+                                                                                        Month</td>
+                                                                                </tr>
+                                                                                <% } %>
+                                                                                    <% }else{ %>
+                                                                                        <tr>
+                                                                                            <td colspan="5">No
+                                                                                                Record
+                                                                                                Available.........
+                                                                                                for
+                                                                                                This
+                                                                                                Month</td>
+                                                                                        </tr>
+                                                                                        <% } %>
+                                                </tbody>
+                                            </table>
+                                        </section>
+
+
+                                        <!-- 🔹 Add Income -->
+                                        <form class="moneytracker-expense-form" id="moneytracker-income-form-id"
+                                            action="/money_tracker/add_income_record" method="post">
+
+                                            <h2 id="moneytracker-expense-title">Add Income</h2>
+
+                                            <input type="date" min="<%= firstDay %>" max="<%= lastDay %>" name="date"
+                                                id="moneytracker-expense-date" required />
+
+                                            <input type="number" name="amount" id="moneytracker-expense-amount" required
+                                                placeholder="₹ Amount" />
+
+                                            <select id="moneytracker-expense-category" required name="category">
+                                                <option value="💼 Salary">💼 Salary</option>
+                                                <option value="🧑‍💻 Freelance">🧑‍💻 Freelance</option>
+                                                <option value="🎓 Scholarship">🎓 Scholarship</option>
+                                                <option value="🎁 Gift">🎁 Gift</option>
+                                                <option value="🏦 Interest">🏦 Interest</option>
+                                                <option value="📈 Investment Return">📈 Investment Return
+                                                </option>
+                                                <option value="🏠 Rental Income">🏠 Rental Income</option>
+                                                <option value="🛍️ Business">🛍️ Business</option>
+                                                <option value="➕ Others">➕ Others</option>
+                                            </select>
+
+
+                                            <button id="moneytracker-add-expense-btn">➕ Add Income</button>
+                                        </form>
+
+
+
+
+
+
+                                        <% data=user.money_manager.income_record %>
+                                            <!-- 🔹 income Records -->
+                                            <section class="moneytracker-record-section">
+                                                <h2 id="moneytracker-record-title">Income Records</h2>
+                                                <table id="moneytracker-expense-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Date</th>
+                                                            <th>Amount</th>
+                                                            <th>Category</th>
+                                                            <th>❌</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="moneytracker-expense-table-body">
+                                                        <% if(latest_month){ %>
+                                                            <% let data=latest_month.income_record %>
+                                                                <% if (data.length !==0) { %>
+                                                                    <% data.sort((a, b)=> new Date(b.date) - new
+                                                                        Date(a.date)) %>
+                                                                        <% data.forEach(data=> { %>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <%= data.date.toDateString() %>
+                                                                                </td>
+                                                                                <td
+                                                                                    style="color: green;font-weight: bolder;">
+                                                                                    <%= data.amount %>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%= data.category %>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <form
+                                                                                        action="/money_tracker/income_record_delete"
+                                                                                        method="post">
+                                                                                        <input type="hidden" name="_id"
+                                                                                            value="<%= data._id %>">
+                                                                                        <button
+                                                                                            style="background-color: transparent;">❌</button>
+                                                                                    </form>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <% }); %>
+                                                                                <% }else{ %>
+                                                                                    <tr>
+                                                                                        <td colspan="3">No
+                                                                                            Record
+                                                                                            Available.........
+                                                                                            for
+                                                                                            This
+                                                                                            Month</td>
+                                                                                    </tr>
+                                                                                    <% } %>
+                                                                                        <% }else{ %>
+                                                                                            <tr>
+                                                                                                <td colspan="3">
+                                                                                                    No
+                                                                                                    Record
+                                                                                                    Available.........
+                                                                                                    for
+                                                                                                    This
+                                                                                                    Month</td>
+                                                                                            </tr>
+                                                                                            <% } %>
+                                                    </tbody>
+                                                </table>
+                                            </section>
+
+
+                                            <% }else{ %>
+
+                                                <section class="welcome-card" style="margin-top: 18vh;">
+                                                    <h2>👋 Welcome!</h2>
+                                                    <p>Get <strong>logged in</strong> to explore more features like your
+                                                        To-do list, Timetable, and
+                                                        Important
+                                                        Countdown.</p>
+                                                    <a href="/login" class="action-btn">Log In</a>
+                                                </section>
+
+                                                <% } %>
+
+</div>

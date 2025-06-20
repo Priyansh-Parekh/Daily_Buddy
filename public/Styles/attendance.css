@@ -1,0 +1,341 @@
+#attend-main-content {
+  
+  margin-top: 20vh;
+  margin-left: 14vw;
+  padding: 2.5rem;
+  width: 80.5vw;
+  height: 69vh;
+  /* background: linear-gradient(to bottom right, #1e1e1e, #121212); */
+  color: #e5e7eb;
+  overflow-y: auto;
+}
+
+#attend-main-content::-webkit-scrollbar{
+  display: none;
+}
+
+.attend-container {
+  background: #1e1e1e;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(16, 185, 129, 0.1);
+}
+
+.attend-section {
+  margin-bottom: 2rem;
+  background: #2a2a2e;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.attend-section h3 {
+  color: #facc15;
+  margin-bottom: 1rem;
+}
+
+.attend-section label {
+  display: block;
+  margin: 0.5rem 0 0.2rem;
+  font-weight: 600;
+  color: #9ca3af;
+}
+
+.attend-section input,
+.attend-section select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background-color: #121212;
+  border: 1px solid #9ca3af;
+  color: #f3f4f6;
+}
+
+.attend-btn {
+  background: linear-gradient(to right, #6366f1, #10b981);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.3rem;
+}
+
+.attend-btn:hover {
+  background: linear-gradient(to right, #10b981, #3b82f6);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+}
+
+.attend-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.attend-table th,
+.attend-table td {
+  border: 1px solid #374151;
+  padding: 0.8rem;
+  text-align: center;
+  color: #e5e7eb;
+}
+
+.attend-table th {
+  background-color: #1f2937;
+  color: #facc15;
+}
+
+.attend-actions .attend-change-btn {
+  margin: 0 0.3rem;
+  padding: 0.4rem 0.8rem;
+  background-color: #10b981;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  transition: 0.2s ease;
+}
+
+.attend-actions .attend-change-btn:hover {
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+  transform: scale(1.2);
+}
+
+.attend-rows-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.attend-actions .attend-delete-btn {
+  margin: 0 0.3rem;
+  padding: 0.4rem 0.8rem;
+  background-color: red;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  transition: 0.2s ease;
+}
+
+.attend-delete-btn:hover{
+     transform: scale(1.2);
+}
+
+#attend-rows-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3vw;
+  background-color:#2a2a2e;
+  padding: 12px 16px;
+  margin: 10px 0;
+  width: 90%;
+  height: auto;
+}
+
+.attend-date,
+.attend-status {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  flex: 1;
+}
+
+.attend-status {
+  background-color: #fff;
+}
+
+.attend-delete-btnn {
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.attend-delete-btnn:hover {
+  background-color: #e04344;
+}
+
+#attend-overview-container {
+  width: 95%;
+  margin: 2rem auto;
+  font-family: 'Poppins', sans-serif;
+  background: transparent;
+  color: #e5e7eb;
+}
+
+.subject-block {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: #2a2a2e;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease-in-out;
+}
+
+.subject-block:hover {
+  transform: scale(1.01);
+}
+.subject-block table{
+  display: none;
+}
+.subject-block .subject-title:hover{
+  cursor: pointer;
+}
+.subject-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #facc15;
+  margin-bottom: 1rem;
+  border-left: 5px solid #10b981;
+  border-bottom-left-radius: 30px;
+  padding-left: 1rem;
+}
+
+.attend-subject-overview-porting{
+  display: flex;
+  justify-content: space-between;
+  background-color: #2a2a2e;
+}
+
+.attend-table {
+  display: block;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.attend-table th,
+.attend-table td {
+  padding: 0.75rem;
+  text-align: center;
+  width: 28vw;
+  border: 1px solid #374151;
+  color: #e5e7eb;
+}
+
+.attend-table th {
+  background-color: #1f2937;
+  color: #facc15;
+  font-weight: 600;
+}
+
+.attend-table td {
+  background-color: #1e1e1e;
+}
+
+.record-row:nth-child(even) td {
+  background-color: #2a2a2e;
+}
+
+.no-data {
+  text-align: center;
+  font-style: italic;
+  color: #9ca3af;
+  padding: 1rem 0;
+}
+
+.btn-change,
+.btn-delete {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.btn-change {
+  background-color: #10b981;
+  color: white;
+}
+
+.btn-change:hover {
+  background-color: #059669;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+  transform: scale(1.1);
+}
+
+.btn-delete {
+  background-color: #ef4444;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #dc2626;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+  transform: scale(1.1);
+}
+
+.action-form {
+  display: inline-block;
+}
+
+
+
+
+.attendance-progress-bar {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--progress-color, #888) calc(var(--progress, 0) * 1%),
+    #222 0%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease;
+}
+
+.attendance-progress-bar::before {
+  content: '';
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  background: rgba(42, 42, 46, 0.6);
+  border-radius: 50%;
+  z-index: 1;
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.1);
+}
+
+.attendance-progress-bar:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 18px var(--progress-color);
+}
+
+.attend-percentage {
+  position: relative;
+  font-size: 1rem;
+  font-weight: 700;
+  z-index: 2;
+  color: #fff;
+  transition: color 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+/* Color themes */
+.high-attendance {
+  --progress-color: #28a745;
+}
+
+.medium-attendance {
+  --progress-color: #ffc107;
+}
+
+.low-attendance {
+  --progress-color: #dc3545;
+}
+

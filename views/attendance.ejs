@@ -1,0 +1,158 @@
+<main id="attend-main-content">
+  <% if (user !="email" ) { %>
+
+    <div class="attend-container">
+      <h2>🎓 Attendance Manager</h2>
+
+      <!-- Section 1: Create Subject -->
+      <div class="attend-section">
+        <h3>➕ Create New Subject</h3>
+
+        <form id="attend-subject-form" action="/attendance/add-subject" method="POST">
+          <label for="attend-new-subject">Subject Name:</label>
+          <input type="text" name="subject" id="attend-new-subject" placeholder="e.g., Data Structures" required />
+          <button type="submit" class="attend-btn">Add Subject</button>
+        </form>
+
+        <div id="attend-subject-list">
+          <p><strong>Subjects:</strong>
+            <% if (user.attendance.subjects.length===0) { %>
+              No Subjects Yet...
+              <% } else { %>
+                <% user.attendance.subjects.forEach(data=> { %>
+                  <%= data.subject %>,
+                    <% }) %>
+                      <% } %>
+          </p>
+        </div>
+      </div>
+
+
+      <!-- Section 2: Batch Attendance Entry -->
+      <div class="attend-section" id="attend---entry">
+        <h3>📅 Batch Attendance Entry</h3>
+        <label for="attend-subject-select-01">Select Subject</label>
+        <select id="attend-subject-select-01" name="subject">
+          <option disabled selected value="">-- select --</option>
+          <% user.attendance.subjects.forEach(data=> { %>
+            <option value="<%= data.subject %>">
+              <%= data.subject %>
+            </option>
+            <% }) %>
+        </select>
+
+        <button class="attend-btn" type="button" onclick="addRow()">+ Add Attendance Row</button>
+
+        <form id="attend-form" action="/attendance/entry" method="POST">
+          <!-- Hidden subject field -->
+          <input type="hidden" name="selectedSubject01" id="selectedSubject01" value="">
+
+          <div id="attend-rows-container">
+            <!-- Rows will be inserted here -->
+          </div>
+
+          <button class="attend-btn" type="submit">✅ Submit All</button>
+        </form>
+      </div>
+
+
+      <!-- Section 3: View/Edit Attendance -->
+      <div class="attend-section" id="attend---edit">
+        <h3>📊 View & Edit Attendance</h3>
+
+
+        <div id="attend-overview-container">
+          <% user.attendance.subjects.forEach(data=> { %>
+            <div class="subject-block" id="attend-overview-<%= data.subject %>">
+              <div class="attend-subject-overview-porting">
+                <h2 class="subject-title" id="attend-overview-title-<%= data.subject%>">
+                  <%= data.subject %>
+                </h2>
+
+                <% let present_attend=data.records.filter(obj=> obj.status === "present").length; %>
+                  <% let total_attend=data.records.length; %>
+                    <% let percentage=total_attend> 0 ? (present_attend * 100 / total_attend).toFixed(2) : 0; %>
+                      <% let attend_adding_class_colour; if (percentage> 75) {
+                        attend_adding_class_colour = "high-attendance";
+                        } else if (percentage > 60) {
+                        attend_adding_class_colour = "medium-attendance";
+                        } else {
+                        attend_adding_class_colour = "low-attendance";
+                        }
+                        %>
+                        <div class="attendance-progress-bar <%= attend_adding_class_colour %>"
+                          style="--progress: <%= percentage %>;">
+                          <div class="attend-percentage">
+                            <%= percentage %>%
+                          </div>
+                        </div>
+
+
+              </div>
+
+              <table class="attend-table" id="attend-overview-table-<%= data.subject%>">
+                <thead>
+                  <tr>
+                    <th id="attend-overview-header-date">Date</th>
+                    <th id="attend-overview-header-status">Status</th>
+                    <th id="attend-overview-header-actions">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="attend-overview-body-<%= data.subject %>">
+                  <% if (data.records.length===0) { %>
+                    <tr id="attend-overview-nodata-row">
+                      <td class="no-data" id="attend-overview-nodata">-----------</td>
+                      <td colspan="2" class="no-data" id="attend-overview-nodata">No Data Available</td>
+                    </tr>
+                    <% } else { %>
+                      <% let record_count=0; %>
+                        <% data.records.sort() %>
+                          <% data.records.forEach(record=> { %>
+
+                            <tr class="record-row" id="attend-overview-row-<%= record_count %>">
+                              <td class="record-date" id="attend-overview-date-<%= record_count %>">
+                                <%= record.date.toDateString() %>
+                              </td>
+                              <td class="record-status" id="attend-overview-status-<%= record_count %>">
+                                <%= record.status==="present" ? "✅ Present" : "❌ Absent" %>
+                              </td>
+                              <td class="record-actions" id="attend-overview-actions-<%= record_count %>">
+                                <form action="/attendance/date/status_change" method="POST" class="action-form"
+                                  id="attend-overview-form-change-<%= record_count %>">
+                                  <input type="hidden" name="date" value="<%= record.date %>">
+                                  <input type="hidden" name="subject" value="<%= data.subject %>">
+                                  <button type="submit" class="btn-change"
+                                    id="attend-overview-btn-change-<%= record_count %>">Change</button>
+                                </form>
+                                <form action="/attendance/date/delete" method="POST" class="action-form"
+                                  id="attend-overview-form-delete-<%= record_count %>">
+                                  <input type="hidden" name="date" value="<%= record.date %>">
+                                  <input type="hidden" name="subject" value="<%= data.subject %>">
+                                  <button type="submit" class="btn-delete"
+                                    id="attend-overview-btn-delete-<%= record_count %>">Delete</button>
+                                </form>
+                              </td>
+                            </tr>
+                            <% record_count++; %>
+
+                              <% }) %>
+                                <% } %>
+                </tbody>
+              </table>
+            </div>
+            <% }) %>
+        </div>
+
+
+      </div>
+    </div>
+
+    <% } else { %>
+      <section class="welcome-card" style="margin-top: 16vh;">
+        <h2>👋 Welcome!</h2>
+        <p>Get <strong>logged in</strong> to explore more features like your To-do list, Timetable, and Important
+          Countdown.</p>
+        <a href="/login" class="action-btn">Log In</a>
+      </section>
+      <% } %>
+</main>

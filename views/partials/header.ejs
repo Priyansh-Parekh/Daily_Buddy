@@ -1,0 +1,21 @@
+<header>
+    <div id="head-01">
+        <a href="/"><h1>Daily-Buddy</h1></a>
+        <% if (user=="email" ) { %>
+            <a href="/login" id="login" class="header-btn">Login</a>
+            <a href="/sign_up" id="Sign-Up" class="header-btn">Sign-Up</a>
+            <% }else{ %>
+
+
+
+                <a href="/log_out"method="post" id="header-name" class="header-btn">
+                    <%= user.name %>
+                </a>
+                <% } %>
+    </div>
+
+    <div id="head-02">
+        <p id="daily-quote"></p>
+        <p id="daily-author"></p>
+    </div>
+</header>

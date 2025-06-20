@@ -1,0 +1,120 @@
+/* === Main Content Area === */
+#main-content-- {
+    min-height: 69vh;
+    margin-top: 20vh;
+    margin-left: 14vw;
+    padding: 2.5rem;
+    width: auto;
+    min-width: 79vw;
+    background: linear-gradient(to bottom right, #1e1e1e, #121212);
+    color: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* === Signup Form Card === */
+.signup-form-card {
+    background: linear-gradient(to bottom right, #1e1e1e, #121212);
+    padding: 3rem;
+    border-radius: 16px;
+    max-width: 600px;
+    width: 100%;
+    margin: auto;
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.15);
+    color: #e5e7eb;
+    text-align: left;
+    animation: fadeIn 0.6s ease-in-out;
+    backdrop-filter: blur(4px);
+}
+
+.signup-form-card h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #facc15;
+    text-shadow: 0 0 6px rgba(250, 204, 21, 0.2);
+}
+
+/* === Form Group === */
+.form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #d1d5db;
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    background-color: #2a2a2e;
+    border: 1px solid #374151;
+    color: #f9fafb;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Segoe UI', monospace;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #10b981;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+/* === Submit Button (Reuse your .action-btn class for consistency) === */
+#signup-form .action-btn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(to right, #6366f1, #10b981);
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px rgba(99, 102, 241, 0.2);
+}
+
+#signup-form .action-btn:hover {
+    background: linear-gradient(to right, #10b981, #3b82f6);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    transform: translateY(-2px);
+    color: #fff;
+    cursor: pointer;
+}
+
+/* === Animations === */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === Responsive Design (Optional) === */
+@media (max-width: 768px) {
+    #main-content {
+        margin: 20vh auto 0 auto;
+        width: 90vw;
+        margin-left: 0;
+        padding: 1.5rem;
+        height: auto;
+    }
+
+    .signup-form-card {
+        padding: 2rem;
+    }
+}

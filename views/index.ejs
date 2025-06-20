@@ -1,0 +1,21 @@
+<main id="main-content">
+  <% if (user == "email") { %>
+    <section class="welcome-card">
+      <h2>👋 Welcome!</h2>
+      <p>Get <strong>logged in</strong> to explore more features like your To-do list, Timetable, and Important
+        Countdown.</p>
+      <a href="/login" class="action-btn">Log In</a>
+    </section>
+  <% } else { %>
+    <section class="info-card">
+      <h2>👋 Hello <%= user.name  %>!</h2>
+      <p>You’re successfully logged in.</p>
+      <div class="info-details">
+        <p><strong>Email:</strong> <%= user.email %></p>
+        <p><strong>Country:</strong> <%= user.country %></p>
+        <p>Today is <%= new Date().toLocaleDateString() %>. Hope you're having a productive day!</p>
+        <p>Your dashboard is ready. Stay focused and keep moving forward! 💪</p>
+      </div>
+    </section>
+  <% } %>
+</main>

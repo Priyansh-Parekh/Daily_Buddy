@@ -1,0 +1,337 @@
+/* === Global Reset === */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', monospace;
+    background-color: #121212;
+    /* Base Dark */
+    color: #e5e7eb;
+    /* Light Text */
+}
+
+*::-webkit-scrollbar{
+    display:none;
+}
+
+/* === Header === */
+header {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    height: 20vh;
+    width: 100%;
+    background-color: #1e1e1e;
+    /* Base Grey */
+    border-bottom: 2px solid #10b981;
+    /* Teal */
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.15);
+}
+
+/* === Top Section === */
+#head-01 {
+    display: flex;
+    align-items: center;
+    height: 10vh;
+    padding: 0 2em;
+    gap: 2vw;
+}
+
+/* === Gradient Logo Title === */
+#head-01 a{
+    text-decoration: none;
+}
+#head-01 h1 {
+    background: linear-gradient(to right, #6366f1, #a78bfa, #67e8f9);
+    /* Indigo -> Violet -> Aqua */
+    background-clip: text;
+    color: transparent;
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    transition: transform 0.3s ease;
+}
+
+#head-01 h1:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+}
+
+/* === Buttons (now <a> tags styled as buttons) === */
+.header-btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.9em 1.4em;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 1rem;
+    background: linear-gradient(to top left, rgba(42, 42, 46, 0.95), rgba(30, 30, 30, 0.85));
+    border: 1.5px solid #9ca3af;
+    color: #facc15;
+    transition: all 0.3s ease;
+    box-shadow:
+        0 4px 10px rgba(250, 204, 21, 0.08),
+        inset 0 0 0 transparent;
+    backdrop-filter: blur(3px);
+}
+
+.header-btn:hover {
+    background: linear-gradient(to bottom right, #6366f1, #3b82f6);
+    color: #fff;
+    border-color: #67e8f9;
+    box-shadow:
+        0 0 15px #6366f1,
+        0 0 25px #10b981,
+        inset 0 0 4px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px) scale(1.03);
+    cursor: pointer;
+}
+
+/* Specific control: push login/name to right */
+#login,
+#header-name {
+    margin-left: auto;
+}
+
+
+/* === Quote Section === */
+#head-02 {
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e1e1e;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* === Quote Box === */
+#quote-box {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    padding: 1.5rem 2.5rem;
+    background: linear-gradient(to bottom right, #2a2a2e, #1e1e1e);
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    color: #e5e7eb;
+    transition: transform 0.3s ease;
+}
+
+#quote-box:hover {
+    transform: scale(1.01);
+}
+a{
+    text-decoration: none;
+}
+
+/* === Daily Quote === */
+#daily-quote {
+    font-size: 1.5rem;
+    font-style: italic;
+    padding: 0 1em;
+    color: #facc15;
+    /* Highlight */
+    margin-bottom: 0.3rem;
+}
+
+/* === Quote Author === */
+#daily-author {
+    font-size: 1rem;
+    color: #9ca3af;
+    /* Subtle Gray */
+    font-weight: 500;
+}
+
+/* Sidebar Container */
+#sidebar {
+    background: #121212;
+    height: 72vh;
+    margin-top: 20vh;
+    position: fixed;
+    width: 14vw;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 0;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+    margin-bottom: 1rem;
+}
+
+.sidebar-header h3 {
+    color: #facc15;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    border-bottom: 2px solid #10b981;
+    padding-bottom: 0.5rem;
+    width: 90%;
+}
+
+/* Sidebar List */
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+/* Sidebar Items */
+#sidebar ul li {
+    width: 100%;
+    text-align: center;
+    margin: 1.2em 0;
+}
+
+#sidebar ul li a {
+    text-decoration: none;
+    color: #e5e7eb;
+    font-weight: 600;
+    font-size: 0.75rem;
+    display: block;
+    text-align: start;
+    padding-top: 0.55em;
+    padding-bottom: 0.55em;
+    padding-left: 15%;
+    transition: all 0.3s ease;
+    border-radius: 0 16px 16px 0;
+    background-color: transparent;
+    position: relative;
+}
+
+/* Hover Effect with Glow */
+#sidebar ul li a:hover {
+    background: linear-gradient(to right, #6366f1, #10b981);
+    color: #fff;
+    transform: translateX(6px);
+    box-shadow: 3px 3px 10px rgba(16, 185, 129, 0.3);
+}
+
+
+/* === Main Content Area === */
+#main-content {
+    margin-top: 20vh;
+    margin-left: 14vw;
+    padding: 2.5rem;
+    width: 80.5vw;
+    height: 69vh;
+    background: linear-gradient(to bottom right, #1e1e1e, #121212);
+    color: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#main-content::-webkit-scrollbar{
+    display: none;
+}
+
+/* === Welcome Card === */
+.welcome-card {
+    background: linear-gradient(to top left, #2a2a2e, #1e1e1e);
+    padding: 2.5rem 3rem;
+    margin:  auto;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.15);
+    text-align: center;
+    max-width: 500px;
+    transition: transform 0.3s ease;
+}
+
+.welcome-card:hover {
+    transform: scale(1.02);
+}
+
+/* Heading */
+.welcome-card h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #facc15;
+    text-shadow: 0 0 6px rgba(250, 204, 21, 0.2);
+}
+
+/* Paragraph */
+.welcome-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: #d1d5db;
+}
+
+/* Call-to-action Button */
+.action-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(to right, #6366f1, #10b981);
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px rgba(99, 102, 241, 0.2);
+}
+
+.action-btn:hover {
+    background: linear-gradient(to right, #10b981, #3b82f6);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    transform: translateY(-2px);
+    color: #fff;
+    cursor: pointer;
+}
+/* Main info card styling */
+.info-card {
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 600px;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e4e4f0; /* Soft white-blue text */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect */
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+/* Heading */
+.info-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #00bcd4; /* Cyan for a refreshing tone */
+}
+
+/* Paragraphs inside the main card */
+.info-card p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+    font-size: 1rem;
+    color: #d1d1e0; /* Slightly lighter for content */
+}
+
+/* Bold info (Email, Country) */
+.info-details p strong {
+    color: #ffd369; /* Highlight key details in soft yellow */
+    font-weight: 600;
+}
+
+/* Container for user details */
+.info-details {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #2a2a3c; /* Dark purple-blue background for contrast */
+    border-left: 5px solid #00bcd4;
+    border-radius: 0.5rem;
+}
+
