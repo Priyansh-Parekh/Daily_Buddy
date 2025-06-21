@@ -21,7 +21,6 @@
               <% if (taskList && taskList.length> 0) { %>
                 <% taskList.forEach((todo, index)=> { %>
                   <li>
-                    <input type="checkbox" id="<%= section %>-<%= index %>">
                     <input type="hidden" name="_id" value="<%= todo._id %>">
                     <label for="<%= section %>-<%= index %>">
                       <%= todo.data %>
