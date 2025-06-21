@@ -8,8 +8,9 @@
         <canvas id="moneytracker-expense-chart"></canvas>
 
         <!-- 🔹 Summary -->
-
-        <% let latest_month=user.money_manager[0] %>
+        <% let all_months = user.money_manager %>
+        <%  all_months=all_months.sort((a, b) => b.month.localeCompare(a.month)); %>
+       <% let latest_month = all_months[0] %>
             <h2>All This Data will be of Current Month.....</h2>
             <section class="moneytracker-summary">
                 <div class="moneytracker-summary-box">Income: <span id="moneytracker-sum-income">₹
