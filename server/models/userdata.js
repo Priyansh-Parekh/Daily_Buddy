@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://priyanshparekh24:Pass%4025@ace-up-data.wkfpvme.mongodb.net/Daily-Buddy', {
+mongoose.connect('mongodb+srv://priyanshparekh24:ONrFOXQ9foslYv93@ace-up-data.wkfpvme.mongodb.net/Daily-Buddy', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
